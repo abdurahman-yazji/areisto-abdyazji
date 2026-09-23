@@ -1,5 +1,7 @@
 import 'package:coffee_menu_ui/theme.dart';
 import 'package:coffee_menu_ui/widgets/custom_search_bar.dart';
+import 'package:coffee_menu_ui/widgets/drink_card.dart';
+import 'package:coffee_menu_ui/widgets/drink_grid.dart';
 import 'package:flutter/material.dart';
 import 'widgets/greeting_row.dart';
 import 'widgets/category_chips.dart';
@@ -44,7 +46,8 @@ class MenuScreen extends StatelessWidget {
                     const CustomerSearchBar(),
                     const SizedBox(height: 24),
                     const CategoryChips(),
-
+                    const SizedBox(height: 24),
+                    const DrinkGrid(), 
                     ]
                     )
                      )
