@@ -1,4 +1,5 @@
 import 'package:coffee_menu_ui/theme.dart';
+import 'package:coffee_menu_ui/widgets/custom_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'widgets/greeting_row.dart';
 
@@ -38,7 +39,11 @@ class MenuScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 16),
-                    const GreetingRow(),]
+                    const GreetingRow(),
+                    const SizedBox(height: 24),
+                    const CustomerSearchBar(),
+                    
+                    ]
                     )
                      )
                     )
