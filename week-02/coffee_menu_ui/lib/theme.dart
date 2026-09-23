@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-class AppTheme{
-  static const Color pageBackgroundColor = Color(0xFFFDFBF9);
+class AppTheme {
+  // Hex Colors
+  static const Color pageBackground = Color(0xFFFDFBF9);
   static const Color surfaceCard = Color(0xFFFFFFFF);
   static const Color primaryBrand = Color(0xFF6F4E37);
   static const Color accentCaramel = Color(0xFFD9A066);
@@ -13,7 +13,7 @@ class AppTheme{
 
   static ThemeData get lightTheme {
     return ThemeData(
-      scaffoldBackgroundColor: pageBackgroundColor,
+      scaffoldBackgroundColor: pageBackground,
       primaryColor: primaryBrand,
       colorScheme: const ColorScheme.light(
         primary: primaryBrand,
@@ -63,8 +63,8 @@ class AppTheme{
           fontSize: 12,
           fontWeight: FontWeight.w400,
           color: textSecondary,
-        ),)
+        ),
+      ),
     );
   }
-
 }

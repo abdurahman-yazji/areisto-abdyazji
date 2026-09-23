@@ -69,14 +69,14 @@ class DrinkCard extends StatelessWidget {
               Container(
                 width: 28,
                 height: 28,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: AppTheme.primaryBrand,
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
                   Icons.add,
                   color: Colors.white,
-                  size: 18,
+                  size: 20,
                 ),
               ),
             ],
