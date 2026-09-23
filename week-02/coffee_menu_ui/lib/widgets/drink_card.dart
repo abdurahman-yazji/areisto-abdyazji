@@ -14,7 +14,7 @@ class DrinkCard extends StatelessWidget {
     required this.price,
     required this.icon,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -42,11 +42,7 @@ class DrinkCard extends StatelessWidget {
               color: AppTheme.chipUnselected,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              size: 36,
-              color: AppTheme.primaryBrand,
-            ),
+            child: Icon(icon, size: 36, color: AppTheme.primaryBrand),
           ),
           const SizedBox(height: 8),
           Text(
@@ -73,17 +69,12 @@ class DrinkCard extends StatelessWidget {
                   color: AppTheme.primaryBrand,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 20,
-                ),
+                child: const Icon(Icons.add, color: Colors.white, size: 20),
               ),
             ],
           ),
         ],
       ),
     );
-    }
-  
   }
+}

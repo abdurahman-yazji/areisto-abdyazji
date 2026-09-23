@@ -6,6 +6,7 @@ import 'package:coffee_menu_ui/widgets/offer_banner.dart';
 import 'package:flutter/material.dart';
 import 'widgets/greeting_row.dart';
 import 'widgets/category_chips.dart';
+
 void main() {
   runApp(const CoffeeMenuApp());
 }
@@ -23,7 +24,6 @@ class CoffeeMenuApp extends StatelessWidget {
     );
   }
 }
-
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -49,7 +49,7 @@ class MenuScreen extends StatelessWidget {
                     const CategoryChips(),
                     const SizedBox(height: 24),
                     const OfferBanner(),
-                    const SizedBox(height: 24), 
+                    const SizedBox(height: 24),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,14 +67,14 @@ class MenuScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     const DrinkGrid(),
                     const SizedBox(height: 24),
-                    ],
-                    ),
-                     ),
-                    ),
-                     const BottomNavBar()
-                    ] ,
-          ),
+                  ],
+                ),
+              ),
+            ),
+            const BottomNavBar(),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

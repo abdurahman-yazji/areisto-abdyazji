@@ -29,7 +29,7 @@ class DrinkGrid extends StatelessWidget {
       'price': '\$5',
       'icon': Icons.coffee,
     },
-     {
+    {
       'name': 'Mojito',
       'subtitle': 'Ment, Lime, Soda Water',
       'price': '\$5',
@@ -42,9 +42,8 @@ class DrinkGrid extends StatelessWidget {
       'icon': Icons.local_drink,
     },
   ];
-  
-  
-   @override
+
+  @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
@@ -67,6 +66,4 @@ class DrinkGrid extends StatelessWidget {
       },
     );
   }
-  
-  
-  }
+}

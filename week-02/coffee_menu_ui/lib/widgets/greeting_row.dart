@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-
 class GreetingRow extends StatelessWidget {
   const GreetingRow({super.key});
 

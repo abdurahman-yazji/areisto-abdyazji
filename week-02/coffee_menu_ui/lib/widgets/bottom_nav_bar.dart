@@ -22,9 +22,21 @@ class BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(Icons.home_rounded, color: AppTheme.primaryBrand, size: 26),
-          Icon(Icons.favorite_border_rounded, color: AppTheme.textSecondary, size: 24),
-          Icon(Icons.shopping_bag_outlined, color: AppTheme.textSecondary, size: 24),
-          Icon(Icons.person_outline_rounded, color: AppTheme.textSecondary, size: 24),
+          Icon(
+            Icons.favorite_border_rounded,
+            color: AppTheme.textSecondary,
+            size: 24,
+          ),
+          Icon(
+            Icons.shopping_bag_outlined,
+            color: AppTheme.textSecondary,
+            size: 24,
+          ),
+          Icon(
+            Icons.person_outline_rounded,
+            color: AppTheme.textSecondary,
+            size: 24,
+          ),
         ],
       ),
     );

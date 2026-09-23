@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme.dart';
 
@@ -98,7 +98,8 @@ class OfferBanner extends StatelessWidget {
               right: 12,
               top: 22,
               child: Transform.rotate(
-                angle: -0.5, // إمالة بمقدار -5 درجات // إمالة بزاوية دائريّة دقيقة كما في التصميم
+                angle:
+                    -0.5, // إمالة بمقدار -5 درجات // إمالة بزاوية دائريّة دقيقة كما في التصميم
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
