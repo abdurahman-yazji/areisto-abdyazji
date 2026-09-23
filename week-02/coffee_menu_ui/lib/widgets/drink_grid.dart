@@ -53,7 +53,7 @@ class DrinkGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: 0.72,
+        childAspectRatio: 0.79,
       ),
       itemCount: drinks.length,
       itemBuilder: (context, index) {
