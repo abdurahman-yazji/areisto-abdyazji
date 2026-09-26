@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../theme.dart';
 
 class OfferBanner extends StatelessWidget {
@@ -59,21 +58,11 @@ class OfferBanner extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: 'Save 50% ',
-                          style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            height: 1.2,
-                          ),
+                          style: AppTheme.offerHeadlineStyle,
                         ),
                         TextSpan(
                           text: 'on your first\norder',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white.withOpacity(0.9),
-                            height: 1.2,
-                          ),
+                          style: AppTheme.offerSubtitleStyle,
                         ),
                       ],
                     ),
@@ -118,11 +107,7 @@ class OfferBanner extends StatelessWidget {
                   ),
                   child: Text(
                     '-50%',
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: AppTheme.textPrimary,
-                    ),
+                    style: AppTheme.offerBadgeStyle,
                   ),
                 ),
               ),
@@ -150,11 +135,7 @@ class _OfferPill extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.poppins(
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
-          color: Colors.white,
-        ),
+        style: AppTheme.offerPillStyle,
       ),
     );
   }

@@ -13,7 +13,7 @@ class CustomerSearchBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: AppTheme.cardShadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),

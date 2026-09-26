@@ -12,7 +12,7 @@ class BottomNavBar extends StatelessWidget {
         color: AppTheme.surfaceCard,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: AppTheme.cardShadow,
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
