@@ -38,4 +38,17 @@ final List<Drink> sampleDrinks = [
     price: '\$5',
     icon: Icons.local_drink,
   ),
+    const Drink(
+    name: 'Flat White',
+    subtitle: 'Espresso, Steamed Milk',
+    price: '\$10',
+    icon: Icons.local_cafe,
+  ),
+  const Drink(
+    name: 'Iced Latte',
+    subtitle: 'Espresso, Milk, Ice',
+    price: '\$11',
+    icon: Icons.icecream,
+    isSoldOut: true,
+  ),
 ];

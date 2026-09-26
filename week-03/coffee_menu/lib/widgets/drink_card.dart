@@ -33,13 +33,17 @@ Widget build(BuildContext context) {
           height: 100,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: AppTheme.chipUnselected,
+            color: drink.isSoldOut
+              ? AppTheme.soldOutBackground
+              : AppTheme.chipUnselected,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
             drink.icon,
             size: 36,
-            color: AppTheme.primaryBrand,
+            color: drink.isSoldOut
+                ? AppTheme.soldOutIcon
+                : AppTheme.primaryBrand,
           ),
         ),
         const SizedBox(height: 8),
@@ -60,19 +64,22 @@ Widget build(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(drink.price, style: textTheme.bodyLarge),
-            Container(
-              width: 28,
-              height: 28,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryBrand,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(
-                Icons.add,
-                color: AppTheme.onBrand,
-                size: 20,
-              ),
-            ),
+             
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color:  drink.isSoldOut
+                           ? AppTheme.soldOutIcon
+                           : AppTheme.primaryBrand,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: AppTheme.onBrand,
+                    size: 20,
+                  ),
+                ),
           ],
         ),
       ],

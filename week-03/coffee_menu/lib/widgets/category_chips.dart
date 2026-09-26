@@ -12,6 +12,8 @@ class CategoryChips extends StatelessWidget {
     'Cold Brew',
     'Mojito',
     'Iced Tea',
+    'Pastries',
+    'cheescakes'
   ];
 
   @override

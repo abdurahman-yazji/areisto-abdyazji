@@ -11,7 +11,8 @@ class AppTheme {
   static const Color textSecondary = Color(0xFF6F6156);
   static const Color chipUnselected = Color(0xFFF1EAE4);
   static const Color onBrand = Colors.white;
-
+  static const Color soldOutBackground = Color(0xFFE0E0E0);
+  static const Color soldOutIcon = Color(0xFF9E9E9E);
   // Shadows and offer colors
 static final Color cardShadow = Colors.black.withValues(alpha: 0.06);
 static final Color offerCircleStrong = Colors.white.withValues(alpha: 0.07);
