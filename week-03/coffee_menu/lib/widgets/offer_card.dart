@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
+import 'offer_pill.dart';
 
-class OfferBanner extends StatelessWidget {
-  const OfferBanner({super.key});
+class OfferCard  extends StatelessWidget {
+  const OfferCard ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class OfferBanner extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.07),
+                  color: AppTheme.offerCircleStrong,
                 ),
               ),
             ),
@@ -40,7 +41,7 @@ class OfferBanner extends StatelessWidget {
                 height: 88,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color:  AppTheme.offerCircleSoft,
                 ),
               ),
             ),
@@ -75,8 +76,8 @@ class OfferBanner extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 6,
                   children: [
-                    _OfferPill(label: 'Code AREISTO'),
-                    _OfferPill(label: 'Today only'),
+                    OfferPill(label: 'Code AREISTO'),
+                    OfferPill(label: 'Today only'),
                   ],
                 ),
               ],
@@ -99,7 +100,7 @@ class OfferBanner extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.12),
+                        color: AppTheme.offerBadgeShadow,
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -119,24 +120,4 @@ class OfferBanner extends StatelessWidget {
   }
 }
 
-// كبسولة معلومات العرض الفرعية
-class _OfferPill extends StatelessWidget {
-  final String label;
 
-  const _OfferPill({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.18),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: AppTheme.offerPillStyle,
-      ),
-    );
-  }
-}

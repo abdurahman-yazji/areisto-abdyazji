@@ -13,13 +13,12 @@ class AppTheme {
   static const Color onBrand = Colors.white;
 
   // Shadows and offer colors
-  static final Color cardShadow = Colors.black.withOpacity(0.06);
-  static final Color offerCircleStrong = Colors.white.withOpacity(0.07);
-  static final Color offerCircleSoft = Colors.white.withOpacity(0.05);
-  static final Color offerSubtitleColor = Colors.white.withOpacity(0.9);
-  static final Color offerPillBackground = Colors.white.withOpacity(0.18);
-  static final Color offerBadgeShadow = Colors.black.withOpacity(0.12);
-
+static final Color cardShadow = Colors.black.withValues(alpha: 0.06);
+static final Color offerCircleStrong = Colors.white.withValues(alpha: 0.07);
+static final Color offerCircleSoft = Colors.white.withValues(alpha: 0.05);
+static final Color offerSubtitleColor = Colors.white.withValues(alpha: 0.9);
+static final Color offerPillBackground = Colors.white.withValues(alpha: 0.18);
+static final Color offerBadgeShadow = Colors.black.withValues(alpha: 0.12);
   // Offer text styles
   static final TextStyle offerHeadlineStyle = GoogleFonts.poppins(
     fontSize: 20,
