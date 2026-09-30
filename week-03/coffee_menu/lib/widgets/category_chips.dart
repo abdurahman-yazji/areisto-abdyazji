@@ -6,14 +6,10 @@ class CategoryChips extends StatelessWidget {
 
   static const List<String> categories = [
     'All',
-    'Espresso',
-    'Latte',
-    'Cappuccino',
-    'Cold Brew',
-    'Mojito',
-    'Iced Tea',
-    'Pastries',
-    'cheescakes'
+    'Coffee',
+    'Cold',
+    'Tea',
+    'Pastries'
   ];
 
   @override

@@ -7,42 +7,51 @@ final List<Drink> sampleDrinks = [
     subtitle: 'Espresso, Steamed Milk',
     price: 12,
     icon: Icons.local_cafe,
+    category: 'Coffee'
   ),
   const Drink(
     name: 'Cappuccino',
     subtitle: 'Espresso, Foamed Milk',
     price: 12,
     icon: Icons.coffee,
+    category: 'Coffee'
+
   ),
   const Drink(
     name: 'Cold Brew',
     subtitle: 'Espresso, Ice, cold water',
     price: 7,
     icon: Icons.local_cafe,
+    category: 'Cold'
   ),
   const Drink(
     name: 'Espresso',
     subtitle: 'Espresso, Hot Water',
     price: 5,
     icon: Icons.coffee,
+    category: 'Coffee'
   ),
   const Drink(
     name: 'Mojito',
     subtitle: 'Ment, Lime, Soda Water',
     price: 5,
     icon: Icons.local_drink,
+    category: 'Cold'
   ),
   const Drink(
     name: 'Iced Tea',
     subtitle: 'Ice, Tea, Fruit Syrup',
     price: 5,
     icon: Icons.local_drink,
+    category: 'Cold'
+    
   ),
     const Drink(
     name: 'Flat White',
     subtitle: 'Espresso, Steamed Milk',
     price: 9,
     icon: Icons.local_cafe,
+    category: 'Coffee'
   ),
   const Drink(
     name: 'Iced Latte',
@@ -50,5 +59,6 @@ final List<Drink> sampleDrinks = [
     price: 9,
     icon: Icons.icecream,
     isSoldOut: true,
+    category: 'Cold'
   ),
 ];
