@@ -16,7 +16,10 @@ class OfferPill extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: AppTheme.offerPillStyle,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: AppTheme.onBrand,
+          fontWeight: FontWeight.w500,
+        )
       ),
     );
   }
