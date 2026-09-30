@@ -89,14 +89,14 @@ class OfferCard  extends StatelessWidget {
               top: 22,
               child: Transform.rotate(
                 angle:
-                    -0.5, // إمالة بمقدار -5 درجات // إمالة بزاوية دائريّة دقيقة كما في التصميم
+                    -0.5, // إمالة بزاوية دائريّة دقيقة كما في التصميم
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppTheme.accentCaramel, // لون الكاراميل (#D9A066)
+                    color: AppTheme.accentCaramel, 
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(

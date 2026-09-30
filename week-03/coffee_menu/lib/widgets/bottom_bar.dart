@@ -21,7 +21,10 @@ class BottomBar  extends StatelessWidget {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Icon(Icons.home_rounded, color: AppTheme.primaryBrand, size: 26),
+          Icon(Icons.home_rounded, 
+          color: AppTheme.primaryBrand, 
+          size: 26
+          ),
           Icon(
             Icons.favorite_border_rounded,
             color: AppTheme.textSecondary,

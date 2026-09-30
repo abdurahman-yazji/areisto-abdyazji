@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Drink {
   final String name;
   final String subtitle;
-  final String price;
+  final double price;
   final IconData icon;
   final bool isSoldOut;
   const Drink({

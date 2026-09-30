@@ -63,7 +63,7 @@ Widget build(BuildContext context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(drink.price, style: textTheme.bodyLarge),
+            Text(drink.price.toString(), style: textTheme.bodyLarge),
              
                 Container(
                   width: 28,
