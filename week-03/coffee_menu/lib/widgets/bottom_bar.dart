@@ -6,8 +6,11 @@ class BottomBar  extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 68,
+    return SafeArea(
+      top: false,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+
       decoration: BoxDecoration(
         color: AppTheme.surfaceCard,
         boxShadow: [
@@ -18,6 +21,7 @@ class BottomBar  extends StatelessWidget {
           ),
         ],
       ),
+      
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -42,6 +46,8 @@ class BottomBar  extends StatelessWidget {
           ),
         ],
       ),
+   
+   ),
     );
   }
 }
