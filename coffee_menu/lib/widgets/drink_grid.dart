@@ -18,7 +18,7 @@ class DrinkGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ Empty state
+  
     if (drinks.isEmpty) {
       return const Padding(
         padding: EdgeInsets.symmetric(vertical: 48),
