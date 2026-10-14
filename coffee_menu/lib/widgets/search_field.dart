@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-class CustomerSearchBar extends StatelessWidget {
-  const CustomerSearchBar({super.key});
+class SearchField extends StatelessWidget {
+  const SearchField({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
       decoration: BoxDecoration(
         color: AppTheme.surfaceCard,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: AppTheme.cardShadow,
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
         ],
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       child: Row(
         children: [
           const Icon(Icons.search, color: AppTheme.textSecondary, size: 20),

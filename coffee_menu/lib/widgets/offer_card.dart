@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../theme.dart';
+import 'offer_pill.dart';
 
-class OfferBanner extends StatelessWidget {
-  const OfferBanner({super.key});
+class OfferCard  extends StatelessWidget {
+  const OfferCard ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class OfferBanner extends StatelessWidget {
                 height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.07),
+                  color: AppTheme.offerCircleStrong,
                 ),
               ),
             ),
@@ -41,7 +41,7 @@ class OfferBanner extends StatelessWidget {
                 height: 88,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.05),
+                  color:  AppTheme.offerCircleSoft,
                 ),
               ),
             ),
@@ -59,21 +59,11 @@ class OfferBanner extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: 'Save 50% ',
-                          style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            height: 1.2,
-                          ),
+                          style: AppTheme.offerHeadlineStyle,
                         ),
                         TextSpan(
                           text: 'on your first\norder',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white.withOpacity(0.9),
-                            height: 1.2,
-                          ),
+                          style: AppTheme.offerSubtitleStyle,
                         ),
                       ],
                     ),
@@ -86,8 +76,8 @@ class OfferBanner extends StatelessWidget {
                   spacing: 8,
                   runSpacing: 6,
                   children: [
-                    _OfferPill(label: 'Code AREISTO'),
-                    _OfferPill(label: 'Today only'),
+                    OfferPill(label: 'Code AREISTO'),
+                    OfferPill(label: 'Today only'),
                   ],
                 ),
               ],
@@ -99,18 +89,18 @@ class OfferBanner extends StatelessWidget {
               top: 22,
               child: Transform.rotate(
                 angle:
-                    -0.5, // إمالة بمقدار -5 درجات // إمالة بزاوية دائريّة دقيقة كما في التصميم
+                    -0.5, // إمالة بزاوية دائريّة دقيقة كما في التصميم
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
                     vertical: 8,
                   ),
                   decoration: BoxDecoration(
-                    color: AppTheme.accentCaramel, // لون الكاراميل (#D9A066)
+                    color: AppTheme.accentCaramel, 
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.12),
+                        color: AppTheme.offerBadgeShadow,
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -118,11 +108,7 @@ class OfferBanner extends StatelessWidget {
                   ),
                   child: Text(
                     '-50%',
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: AppTheme.textPrimary,
-                    ),
+                    style: AppTheme.offerBadgeStyle,
                   ),
                 ),
               ),
@@ -134,28 +120,4 @@ class OfferBanner extends StatelessWidget {
   }
 }
 
-// كبسولة معلومات العرض الفرعية
-class _OfferPill extends StatelessWidget {
-  final String label;
 
-  const _OfferPill({required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.18),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: GoogleFonts.poppins(
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
