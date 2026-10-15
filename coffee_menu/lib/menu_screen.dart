@@ -1,4 +1,6 @@
+import 'package:coffee_menu_ui/cart_screen.dart';
 import 'package:coffee_menu_ui/data/drink_data.dart';
+import 'package:coffee_menu_ui/drink_detail_screen.dart';
 import 'package:coffee_menu_ui/models/drink.dart';
 import 'package:coffee_menu_ui/models/order.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,23 @@ class _MenuScreenState extends State<MenuScreen> {
 
   List<Drink> get _filteredDrinks => _selectedCategory == 'All'
       ? sampleDrinks
-      : sampleDrinks.where((d) => d.category == _selectedCategory).toList();
+      : sampleDrinks.where((drink) => drink.category == _selectedCategory).toList();
+
+  void _openDrinkDetails(Drink drink) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => DrinkDetailScreen(drink: drink),
+      ),
+    );
+  }
+
+  void _openCart() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => CartScreen(order: _order),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +62,9 @@ class _MenuScreenState extends State<MenuScreen> {
                     const SizedBox(height: 24),
                     CategoryChips(
                       selected: _selectedCategory,
-                      onSelect: (cat) => setState(() => _selectedCategory = cat),
+                      onSelect: (category) {
+                        setState(() => _selectedCategory = category);
+                      },
                     ),
                     const SizedBox(height: 24),
                     const OfferCard(),
@@ -52,15 +72,24 @@ class _MenuScreenState extends State<MenuScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Popular', style: Theme.of(context).textTheme.titleLarge),
-                        Text('See all', style: Theme.of(context).textTheme.labelLarge),
+                        Text(
+                          'Popular',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        Text(
+                          'See all',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 16),
                     DrinkGrid(
                       drinks: _filteredDrinks,
                       order: _order,
-                      onAdd: (drink) => setState(() => _order.addDrink(drink)),
+                      onAdd: (drink) {
+                        setState(() => _order.addDrink(drink));
+                      },
+                      onOpen: _openDrinkDetails,
                     ),
                     const SizedBox(height: 24),
                   ],
@@ -70,6 +99,7 @@ class _MenuScreenState extends State<MenuScreen> {
             BottomBar(
               itemCount: _order.itemCount,
               total: _order.total,
+              onTap: _openCart,
             ),
           ],
         ),

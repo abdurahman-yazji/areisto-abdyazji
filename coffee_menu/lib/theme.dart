@@ -3,6 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors
+  static const Color successText = Color(0xFF2F6B4F);
+  static const Color successPanel = Color(0xFFEDF4F0);
+
+  static const Color errorText = Color(0xFFA33B2A);
+  static const Color errorPanel = Color(0xFFFBEEEB);
+
+  static const Color disabledButtonFill = Color(0xFFE4DAD2);
+  static const Color disabledButtonText = Color(0xFF8F8176);
   static const Color pageBackground = Color(0xFFFDFBF9);
   static const Color surfaceCard = Color(0xFFFFFFFF);
   static const Color primaryBrand = Color(0xFF6F4E37);

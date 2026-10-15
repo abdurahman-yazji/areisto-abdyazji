@@ -8,12 +8,14 @@ class DrinkGrid extends StatelessWidget {
   final List<Drink> drinks;     
   final Order order;           
   final ValueChanged<Drink> onAdd; 
+  final ValueChanged<Drink> onOpen;
 
   const DrinkGrid({
     super.key,
     required this.drinks,
     required this.order,
     required this.onAdd,
+    required this.onOpen,
   });
 
   @override
@@ -46,7 +48,9 @@ class DrinkGrid extends StatelessWidget {
         return DrinkCard(
           drink: drink,
           onAdd: () => onAdd(drink),
+          onOpen: () => onOpen(drink),
           count: order.countOf(drink), 
+
         );
       },
     );

@@ -4,12 +4,14 @@ import '../theme.dart';
 class DrinkCard extends StatelessWidget {
   final Drink drink;
   final VoidCallback onAdd;  
+  final VoidCallback onOpen;
   final int count;           
 
   const DrinkCard({
     super.key,
     required this.drink,
     required this.onAdd,
+    required this.onOpen,
     this.count = 0,
   });
 
@@ -17,20 +19,23 @@ class DrinkCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceCard,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.cardShadow,
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
+    return GestureDetector(
+      onTap: onOpen,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: AppTheme.surfaceCard,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: AppTheme.cardShadow,
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack( 
@@ -115,6 +120,8 @@ class DrinkCard extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
+
   }
 }
