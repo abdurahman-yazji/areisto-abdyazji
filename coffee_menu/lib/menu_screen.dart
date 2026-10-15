@@ -26,10 +26,19 @@ class _MenuScreenState extends State<MenuScreen> {
       ? sampleDrinks
       : sampleDrinks.where((drink) => drink.category == _selectedCategory).toList();
 
+    void _addDrink(Drink drink) {
+    setState(() {
+      _order.addDrink(drink);
+    });
+  }
+
   void _openDrinkDetails(Drink drink) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => DrinkDetailScreen(drink: drink),
+        builder: (_) => DrinkDetailScreen(
+          drink: drink,
+          onAdd: _addDrink,
+        ),
       ),
     );
   }
@@ -86,9 +95,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     DrinkGrid(
                       drinks: _filteredDrinks,
                       order: _order,
-                      onAdd: (drink) {
-                        setState(() => _order.addDrink(drink));
-                      },
+                      onAdd: _addDrink,
                       onOpen: _openDrinkDetails,
                     ),
                     const SizedBox(height: 24),

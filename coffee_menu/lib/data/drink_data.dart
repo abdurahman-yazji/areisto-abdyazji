@@ -2,59 +2,67 @@ import 'package:flutter/material.dart';
 import '../models/drink.dart';
 
 final List<Drink> sampleDrinks = [
-  const Drink(
+  const Coffee(
     name: 'Caffè Latte',
     subtitle: 'Espresso, Steamed Milk',
-    price: 12,
+    description: 'A smooth espresso drink topped with steamed milk and light foam.',
+    basePrice: 12,
     icon: Icons.local_cafe,
     category: 'Coffee',
   ),
-  const Drink(
+  const Coffee(
     name: 'Cappuccino',
     subtitle: 'Espresso, Foamed Milk',
-    price: 12,
+    description: 'A balanced espresso with a thick layer of foamed milk.',
+    basePrice: 12,
     icon: Icons.coffee,
     category: 'Coffee',
   ),
-  const Drink(
+  const Coffee(
     name: 'Cold Brew',
     subtitle: 'Espresso, Ice, cold water',
-    price: 7,
+    description: 'A refreshing coffee drink served cold over ice.',
+    basePrice: 7,
     icon: Icons.local_cafe,
     category: 'Cold',
   ),
-  const Drink(
+  const Coffee(
     name: 'Espresso',
     subtitle: 'Espresso, Hot Water',
-    price: 5,
+    description: 'A bold and concentrated shot of espresso.',
+    basePrice: 5,
     icon: Icons.coffee,
     category: 'Coffee',
   ),
   const Drink(
     name: 'Mojito',
     subtitle: 'Mint, Lime, Soda Water',
-    price: 5,
+    description: 'A fresh mix of mint, lime and sparkling soda water.',
+    basePrice: 5,
     icon: Icons.local_drink,
     category: 'Non-Coffee',
   ),
   const Drink(
     name: 'Iced Tea',
     subtitle: 'Ice, Tea, Fruit Syrup',
-    price: 5,
+    description: 'Chilled tea with a fruity syrup and plenty of ice.',
+    basePrice: 5,
     icon: Icons.local_drink,
     category: 'Cold',
   ),
-  const Drink(
+  const Coffee(
     name: 'Flat White',
     subtitle: 'Espresso, Steamed Milk',
-    price: 9,
+    description: 'A rich espresso drink with silky steamed milk.',
+    basePrice: 9,
     icon: Icons.local_cafe,
     category: 'Coffee',
   ),
-  const Drink(
+  const Coffee(
     name: 'Iced Latte',
     subtitle: 'Espresso, Milk, Ice',
-    price: 9,
+    description: 'Espresso and milk poured over ice for a cool coffee drink.',
+    basePrice: 9,
     icon: Icons.icecream,
     category: 'Cold',
     isSoldOut: true,
@@ -62,7 +70,8 @@ final List<Drink> sampleDrinks = [
   const Drink(
     name: 'Croissant',
     subtitle: 'Butter, Flour',
-    price: 4,
+    description: 'A flaky, buttery pastry baked until golden.',
+    basePrice: 4,
     icon: Icons.bakery_dining,
     category: 'Pastries',
     isSoldOut: true,
