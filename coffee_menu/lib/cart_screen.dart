@@ -25,40 +25,36 @@ class _CartScreenState extends State<CartScreen> {
   String? _successOrderNumber;
   String? _errorMessage;
 
-  Future<void> _placeOrder() async {
-    if (_isPlacingOrder || widget.order.itemCount == 0) {
-      return;
-    }
+Future<void> _placeOrder() async {
+  if (_isPlacingOrder || widget.order.itemCount == 0) return;
+
+  setState(() {
+    _isPlacingOrder = true;
+    _successOrderNumber = null;
+    _errorMessage = null;
+  });
+
+  try {
+    final orderNumber = await _orderService.placeOrder(widget.order);
+
+    widget.order.clear();
+    widget.onChanged();
+
+    if (!mounted) return;
 
     setState(() {
-      _isPlacingOrder = true;
-      _successOrderNumber = null;
-      _errorMessage = null;
+      _isPlacingOrder = false;
+      _successOrderNumber = orderNumber;
     });
+  } catch (error) {
+    if (!mounted) return;
 
-    try {
-      final orderNumber = await _orderService.placeOrder(widget.order);
-
-      // حماية مهمة: المستخدم ممكن يرجع أثناء الانتظار.
-      if (!mounted) return;
-
-      widget.order.clear();
-
-      setState(() {
-        _isPlacingOrder = false;
-        _successOrderNumber = orderNumber;
-      });
-
-      widget.onChanged();
-    } catch (error) {
-      if (!mounted) return;
-
-      setState(() {
-        _isPlacingOrder = false;
-        _errorMessage = error.toString().replaceFirst('Exception: ', '');
-      });
-    }
+    setState(() {
+      _isPlacingOrder = false;
+      _errorMessage = error.toString().replaceFirst('Exception: ', '');
+    });
   }
+}
 
   void _removeItem(int index) {
     setState(() {
