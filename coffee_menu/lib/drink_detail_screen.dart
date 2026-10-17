@@ -17,10 +17,23 @@ class DrinkDetailScreen extends StatefulWidget {
 }
 
 class _DrinkDetailScreenState extends State<DrinkDetailScreen> {
-  DrinkSize _selectedSize = DrinkSize.small;
-  int _extraShots = 0;
+  late DrinkSize _selectedSize;
+  late int _extraShots;
 
-   Drink get _configuredDrink {
+  @override
+  void initState() {
+    super.initState();
+
+    _selectedSize = widget.drink.size;
+
+    if (widget.drink is Coffee) {
+      _extraShots = (widget.drink as Coffee).extraShots;
+    } else {
+      _extraShots = 0;
+    }
+  }
+
+  Drink get _configuredDrink {
     final drink = widget.drink;
 
     if (drink is Coffee) {
@@ -55,178 +68,157 @@ class _DrinkDetailScreenState extends State<DrinkDetailScreen> {
     final configuredDrink = _configuredDrink;
 
     return Scaffold(
+      backgroundColor: AppTheme.pageBackground,
       appBar: AppBar(
         backgroundColor: AppTheme.pageBackground,
         elevation: 0,
+        automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: AppTheme.textPrimary,
+            size: 20,
           ),
         ),
-        title: Text(
-          drink.name,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.favorite_border_rounded,
+                color: AppTheme.textPrimary,
+                size: 22,
+              ),
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 12),
-
-                    Center(
-                      child: Container(
-                        width: 220,
-                        height: 220,
-                        decoration: BoxDecoration(
-                          color: drink.isSoldOut
-                              ? AppTheme.soldOutBackground
-                              : AppTheme.chipUnselected,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          drink.icon,
-                          size: 96,
-                          color: drink.isSoldOut
-                              ? AppTheme.soldOutIcon
-                              : AppTheme.primaryBrand,
-                        ),
+                    Container(
+                      height: 160,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: drink.isSoldOut
+                            ? AppTheme.soldOutBackground
+                            : AppTheme.chipUnselected,
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                      child: Icon(
+                        drink.icon,
+                        size: 64,
+                        color: drink.isSoldOut
+                            ? AppTheme.soldOutIcon
+                            : AppTheme.primaryBrand,
                       ),
                     ),
-
                     const SizedBox(height: 28),
-
                     Text(
                       drink.name,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-
                     const SizedBox(height: 8),
-
                     Text(
                       drink.description,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                       ),
                     ),
-
                     const SizedBox(height: 28),
-
                     Text(
-                      'Choose size',
-                      style: Theme.of(context).textTheme.titleLarge,
+                      'Size',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontSize: 16,
+                      ),
                     ),
-
                     const SizedBox(height: 12),
-
                     Row(
-                      children: DrinkSize.values.map((size) {
-                        final isSelected = size == _selectedSize;
-
-                        return Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              right: size == DrinkSize.large ? 0 : 10,
-                            ),
-                            child: ChoiceChip(
-                              selected: isSelected,
-                              onSelected: (_) {
-                                setState(() => _selectedSize = size);
-                              },
-                              selectedColor: AppTheme.primaryBrand,
-                              backgroundColor: AppTheme.chipUnselected,
-                              showCheckmark: false,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                      children: [
+                        for (final size in DrinkSize.values)
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                right: size == DrinkSize.large ? 0 : 8,
                               ),
-                              label: Container(
-                                width: double.infinity,
-                                alignment: Alignment.center,
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                ),
-                                child: Text(size.label),
-                              ),
-                              labelStyle: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge
-                                  ?.copyWith(
-                                color: isSelected
-                                    ? AppTheme.surfaceCard
-                                    : AppTheme.textPrimary,
+                              child: _SizeOption(
+                                label: size.label,
+                                selected: size == _selectedSize,
+                                onTap: () {
+                                  setState(() => _selectedSize = size);
+                                },
                               ),
                             ),
                           ),
-                        );
-                      }).toList(),
+                      ],
                     ),
-
                     if (drink is Coffee) ...[
                       const SizedBox(height: 28),
-
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             'Extra shots',
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(fontSize: 16),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: AppTheme.chipUnselected,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  onPressed: _extraShots == 0
-                                      ? null
-                                      : () => _changeExtraShots(-1),
-                                  icon: const Icon(Icons.remove_rounded),
-                                  color: AppTheme.primaryBrand,
-                                  disabledColor: AppTheme.textSecondary,
-                                ),
-                                SizedBox(
-                                  width: 28,
-                                  child: Text(
-                                    '$_extraShots',
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: _extraShots == 3
-                                      ? null
-                                      : () => _changeExtraShots(1),
-                                  icon: const Icon(Icons.add_rounded),
-                                  color: AppTheme.primaryBrand,
-                                  disabledColor: AppTheme.textSecondary,
-                                ),
-                              ],
+                          const Spacer(),
+                          Row(
+                            children: [
+                              _StepperButton(
+                                icon: Icons.remove_rounded,
+                                filled: false,
+                                enabled: _extraShots > 0,
+                                onTap: _extraShots == 0
+                                    ? null
+                                    : () => _changeExtraShots(-1),
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                '$_extraShots',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              const SizedBox(width: 12),
+                              _StepperButton(
+                                icon: Icons.add_rounded,
+                                filled: true,
+                                enabled: _extraShots < 3,
+                                onTap: _extraShots == 3
+                                    ? null
+                                    : () => _changeExtraShots(1),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(width: 14),
+                          Flexible(
+                            child: Text(
+                              'Coffee only · +5.00 each',
+                              textAlign: TextAlign.right,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 11),
                             ),
                           ),
                         ],
                       ),
                     ],
-
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 30),
                   ],
                 ),
               ),
             ),
-
             Container(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 20),
+              padding: const EdgeInsets.fromLTRB(20, 14, 20, 18),
               decoration: BoxDecoration(
                 color: AppTheme.surfaceCard,
                 boxShadow: [
@@ -237,45 +229,39 @@ class _DrinkDetailScreenState extends State<DrinkDetailScreen> {
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Price',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppTheme.textSecondary,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        'Total',
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
+                      const SizedBox(height: 2),
                       Text(
-                        'USD ${configuredDrink.price.toStringAsFixed(2)}',
+                        configuredDrink.price.toStringAsFixed(2),
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium
                             ?.copyWith(
                           color: AppTheme.primaryBrand,
-                          fontSize: 24,
+                          fontSize: 22,
                         ),
                       ),
                     ],
                   ),
-
-                  const SizedBox(height: 14),
-
-                  SizedBox(
-                    width: double.infinity,
+                  const SizedBox(width: 18),
+                  Expanded(
                     child: FilledButton(
                       onPressed: drink.isSoldOut ? null : _addToOrder,
                       style: FilledButton.styleFrom(
                         backgroundColor: AppTheme.primaryBrand,
                         disabledBackgroundColor: AppTheme.disabledButtonFill,
                         disabledForegroundColor: AppTheme.disabledButtonText,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        minimumSize: const Size.fromHeight(46),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       child: Text(
@@ -290,6 +276,88 @@ class _DrinkDetailScreenState extends State<DrinkDetailScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SizeOption extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _SizeOption({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 42,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: selected ? AppTheme.primaryBrand : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          label,
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(
+            color: selected
+                ? AppTheme.surfaceCard
+                : AppTheme.textPrimary,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StepperButton extends StatelessWidget {
+  final IconData icon;
+  final bool filled;
+  final bool enabled;
+  final VoidCallback? onTap;
+
+  const _StepperButton({
+    required this.icon,
+    required this.filled,
+    required this.enabled,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final backgroundColor = !enabled
+        ? AppTheme.chipUnselected
+        : filled
+            ? AppTheme.primaryBrand
+            : AppTheme.chipUnselected;
+
+    final iconColor = !enabled
+        ? AppTheme.textSecondary
+        : filled
+            ? AppTheme.surfaceCard
+            : AppTheme.primaryBrand;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 32,
+        height: 32,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(9),
+        ),
+        child: Icon(
+          icon,
+          size: 18,
+          color: iconColor,
         ),
       ),
     );

@@ -70,26 +70,17 @@ class Drink {
 class Coffee extends Drink {
   final int extraShots;
 
-  const Coffee({
-    required String name,
-    required String subtitle,
-    required String description,
-    required double basePrice,
-    required IconData icon,
-    required String category,
-    bool isSoldOut = false,
-    DrinkSize size = DrinkSize.small,
+    const Coffee({
+    required super.name,
+    required super.subtitle,
+    required super.description,
+    required super.basePrice,
+    required super.icon,
+    required super.category,
+    super.isSoldOut = false,
+    super.size = DrinkSize.small,
     this.extraShots = 0,
-  }) : super(
-          name: name,
-          subtitle: subtitle,
-          description: description,
-          basePrice: basePrice,
-          icon: icon,
-          category: category,
-          isSoldOut: isSoldOut,
-          size: size,
-        );
+  });
 
   @override
   double get price => super.price + (extraShots * 5);

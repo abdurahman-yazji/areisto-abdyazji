@@ -43,10 +43,13 @@ class _MenuScreenState extends State<MenuScreen> {
     );
   }
 
-  void _openCart() {
+   void _openCart() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => CartScreen(order: _order),
+        builder: (_) => CartScreen(
+          order: _order,
+          onChanged: () => setState(() {}),
+        ),
       ),
     );
   }
